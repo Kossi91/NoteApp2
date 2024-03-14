@@ -1,33 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:orientation="vertical"-->
+<!--    android:gravity="center"-->
+<!--    android:padding="16dp"-->
+<!--    tools:context=".ui.fragments.note.NoteFragment">-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/ed_txt"-->
+<!--        android:hint="Введите текст"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"/>-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/save_txt"-->
+<!--        android:textSize="24sp"-->
+<!--        android:layout_marginTop="15dp"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"/>-->
+
+<!--    <Button-->
+<!--        android:id="@+id/save_btn"-->
+<!--        android:text="Save"-->
+<!--        android:layout_marginTop="15dp"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"/>-->
+
+<!--</LinearLayout>-->
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:padding="16dp"
     tools:context=".ui.fragments.note.NoteFragment">
 
-    <EditText
-        android:id="@+id/ed_txt"
-        android:hint="Введите текст"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/home_recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent"/>
 
-    <TextView
-        android:id="@+id/save_txt"
-        android:textSize="24sp"
-        android:layout_marginTop="15dp"
-        android:layout_gravity="center"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_btn"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
-
-    <Button
-        android:id="@+id/save_btn"
-        android:text="Save"
-        android:layout_marginTop="15dp"
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-</LinearLayout>
+</FrameLayout>
