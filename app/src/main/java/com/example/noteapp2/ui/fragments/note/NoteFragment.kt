@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.noteapp2.App
 import com.example.noteapp2.R
 import com.example.noteapp2.data.model.NoteModel
 import com.example.noteapp2.databinding.FragmentNoteBinding
@@ -30,12 +31,12 @@ class NoteFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initalize()
+        initialize()
         setupListener()
         getData()
     }
 
-    private fun initalize() {
+    private fun initialize() {
         binding.homeRecyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = noteAdapter
@@ -49,22 +50,8 @@ class NoteFragment : Fragment() {
     }
 
     private fun getData() {
-        getBackStackData<String>("key") { data ->
-            val noteModel = NoteModel(data)
-            list.add(noteModel)
-            noteAdapter.submitList(list)
+        App().getInstance()?.noteDao()?.getAll()?.observe(viewLifecycleOwner){
+            noteAdapter.submitList(it)
         }
     }
 }
-
-//    private fun setupListener() = with(binding) {
-//        val preferences = PreferenceHelper()
-//        preferences.unit(requireContext())
-//        saveBtn.setOnClickListener{
-//            val et = edTxt.text.toString()
-//            preferences.text = et
-//            saveTxt.text = et
-//        }
-//        saveTxt.text= preferences.text
-//    }
-//}
