@@ -36,13 +36,6 @@ class NoteFragment : Fragment() {
         getData()
     }
 
-    private fun initialize() {
-        binding.homeRecyclerView.apply {
-            layoutManager = LinearLayoutManager(requireContext())
-            adapter = noteAdapter
-        }
-    }
-
     private fun setupListener() {
         binding.addBtn.setOnClickListener {
             findNavController().navigate(R.id.action_noteFragment_to_noteDetailFragment)
@@ -52,6 +45,13 @@ class NoteFragment : Fragment() {
     private fun getData() {
         App().getInstance()?.noteDao()?.getAll()?.observe(viewLifecycleOwner){
             noteAdapter.submitList(it)
+        }
+    }
+
+    private fun initialize() {
+        binding.homeRecyclerView.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = noteAdapter
         }
     }
 }
