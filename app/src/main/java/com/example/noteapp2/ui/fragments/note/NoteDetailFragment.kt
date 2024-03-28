@@ -29,7 +29,10 @@ class NoteDetailFragment : Fragment() {
         binding.btnAddText.setOnClickListener{
             val title = binding.etAdd.text.toString()
             App().getInstance()?.noteDao()?.insertNote(NoteModel(title))
-            findNavController().navigateUp()
+            findNavController().navigateUp(
+
+            )
+
            // setBackStackData("key", title , true)
         }
     }

@@ -7,8 +7,9 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.noteapp2.data.model.NoteModel
 import com.example.noteapp2.databinding.ItemNoteBinding
+import com.example.noteapp2.interfaces.OnClickItem
 
-class NoteAdapter : ListAdapter<NoteModel, NoteAdapter.ViewHolder>(DiffCallback()) {
+class NoteAdapter(private val onLongClick : OnClickItem) : ListAdapter<NoteModel, NoteAdapter.ViewHolder>(DiffCallback()) {
     class ViewHolder(private val binding: ItemNoteBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: NoteModel) {
             binding.itemTxt.text = item.title
@@ -22,6 +23,11 @@ class NoteAdapter : ListAdapter<NoteModel, NoteAdapter.ViewHolder>(DiffCallback(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(getItem(position))
+
+        holder.itemView.setOnLongClickListener {
+            onLongClick.onLongClick(getItem(position))
+            true
+        }
     }
 
     class DiffCallback : DiffUtil.ItemCallback<NoteModel>() {
